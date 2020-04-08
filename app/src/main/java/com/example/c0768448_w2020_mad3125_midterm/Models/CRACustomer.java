@@ -22,6 +22,17 @@ public class CRACustomer implements Parcelable
     double total_taxable_amount;
     double total_tax_paid;
 
+    public CRACustomer(String sinNumber, String firstName,
+                       String lastName, String gender, double grossIncome, double rrspContri)
+    {
+        this.sin_number = sinNumber;
+        this.first_name = firstName;
+        this.last_name = lastName;
+        this.gender = gender;
+        this.grossIncome = grossIncome;
+        this.rrsp_contri = rrspContri;
+    }
+
     protected CRACustomer(Parcel in) {
         sin_number = in.readString();
         first_name = in.readString();
