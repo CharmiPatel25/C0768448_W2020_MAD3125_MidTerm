@@ -98,6 +98,22 @@
     android:layout_below="@+id/rdGrpGender"
     android:hint="Tax Filling Date"/>
 
+            <EditText
+                android:id="@+id/txtGrossIncome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTaxFillDate"
+                android:ems="10"
+                android:hint="Enter Gross Income"
+                android:inputType="numberDecimal"/>
+            <EditText
+                android:id="@+id/txtRrs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter RRSP Contributed"
+                android:layout_below="@+id/txtGrossIncome"
+                android:ems="10"/>
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
