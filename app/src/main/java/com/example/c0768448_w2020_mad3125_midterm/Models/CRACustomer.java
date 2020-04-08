@@ -4,7 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class CRACustomer implements Parcelable
 {
@@ -202,5 +204,14 @@ public class CRACustomer implements Parcelable
         dest.writeDouble(EI);
         dest.writeDouble(total_taxable_amount);
         dest.writeDouble(total_tax_paid);
+    }
+
+    public String amountFormatter()
+    {
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+        String val = nf.format("$"+this);
+
+        return val;
+
     }
 }
