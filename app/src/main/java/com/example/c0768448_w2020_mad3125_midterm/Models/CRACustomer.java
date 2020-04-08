@@ -8,19 +8,19 @@ import java.util.Date;
 
 public class CRACustomer implements Parcelable
 {
-    String sin_number;
-    String first_name;
-    String  last_name;
-    String full_name;
-    String gender;
-    Date dob,filingDate;
-    double fed_Tax, prov_Tax;
-    double rrsp_CarryForward;
-    double grossIncome;
-    double rrsp_contri;
-    double EI;
-    double total_taxable_amount;
-    double total_tax_paid;
+    private String sin_number;
+    private String first_name;
+    private String  last_name;
+    private String full_name;
+    private  String gender;
+    private Date dob,filingDate;
+    private  double fed_Tax, prov_Tax;
+    private  double rrsp_CarryForward;
+    private  double grossIncome;
+    private double rrsp_contri;
+    private double EI;
+    private double total_taxable_amount;
+    private double total_tax_paid;
 
     public CRACustomer(String sinNumber, String firstName,
                        String lastName, String gender, double grossIncome, double rrspContri)
