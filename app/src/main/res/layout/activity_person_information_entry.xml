@@ -91,6 +91,12 @@
                 android:textSize="20dp"
                 android:text="Age"/>
 
+<EditText
+    android:id="@+id/txtTaxFillDate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/rdGrpGender"
+    android:hint="Tax Filling Date"/>
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
