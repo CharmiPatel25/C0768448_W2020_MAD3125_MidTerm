@@ -80,6 +80,18 @@
                     android:layout_height="wrap_content"
                     android:text="Other"/>
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="196dp"
+                android:layout_height="46dp"
+                android:layout_below="@+id/txtFirstName"
+                android:layout_toRightOf="@+id/txtBirthDate"
+                android:ems="10"
+                android:textSize="20dp"
+                android:text="Age"/>
+
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
