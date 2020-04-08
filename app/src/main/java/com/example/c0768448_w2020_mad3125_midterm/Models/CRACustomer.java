@@ -58,7 +58,8 @@ public class CRACustomer implements Parcelable
     }
 
     public String getFull_name() {
-        return full_name;
+        return last_name.toUpperCase() + ", " +
+                first_name.substring(0,1).toUpperCase() + first_name.substring(1);
     }
 
     public void setFull_name(String full_name) {
