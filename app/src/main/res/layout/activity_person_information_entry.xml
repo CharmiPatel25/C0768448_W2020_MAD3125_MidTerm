@@ -23,8 +23,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="120dp">
 
             <EditText
                 android:id="@+id/txtSinNumb"
@@ -113,6 +114,19 @@
                 android:hint="Enter RRSP Contributed"
                 android:layout_below="@+id/txtGrossIncome"
                 android:ems="10"/>
+
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtRrs"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="124dp"
+                android:layout_marginEnd="169dp"
+                android:gravity="center"
+                android:text="Calculate" />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
