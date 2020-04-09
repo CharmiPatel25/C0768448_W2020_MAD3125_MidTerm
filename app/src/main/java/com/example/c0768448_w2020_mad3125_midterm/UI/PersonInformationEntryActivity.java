@@ -120,6 +120,10 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
                 }
 
+                if(!validateSinNumb(txtSin.getText().toString()))
+                {
+                    txtSin.setError("Enter a valid SIN number");
+                }
                 if(txtFirstName.getText().toString().isEmpty())
                 {
                     errorMsg();;
@@ -184,8 +188,18 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         Toast.makeText(PersonInformationEntryActivity.this, "Please enter details", Toast.LENGTH_LONG).show();
     }
 
-    public boolean validateSinNumber()
+    public boolean validateSinNumb(String s)
     {
-        return txtSin.getText().toString().matches("^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$");
+        int n = 0;
+        if(txtSin.getText().toString().matches("^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$"))
+        {
+            n = 1;
+            return true;
+        }
+        if(n == 0)
+        {
+            return false;
+        }
+        return true;
     }
 }

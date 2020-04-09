@@ -21,7 +21,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
 
     double cpp = 0, ei = 0;  double rrsp = 0, rrspCf = 0, taxableIncome, federalTax,
             provincialTax, totalTaxPaid;
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +61,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         } else {
             cpp = (grossIncome * 0.051);
         }
-        lblCpp.setText(String.format("%.2f", cpp));
+        lblCpp.setText("$ " +String.format("%.2f", cpp));
 
         // calculate employement insurance
         if(grossIncome > 53100){
@@ -69,7 +69,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         }else{
             ei = (grossIncome * (1.62/100));
         }
-        lblEi.setText(String.format("%.2f", ei));
+        lblEi.setText("$ " +String.format("%.2f", ei));
 
         // calculate RRSP
         rrsp = customer.getRrsp_contri();
@@ -81,29 +81,29 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         if(rrspCf<0)
         {
             lblRrsCarry.setTextColor(Color.parseColor("#9c060b"));
-            lblRrsCarry.setText(String.format("%.2f",rrspCf));
+            lblRrsCarry.setText("$ " +String.format("%.2f",rrspCf));
         }
       else
         {
-            lblRrsCarry.setText(String.format("%.2f",rrspCf));
+            lblRrsCarry.setText("$ " +String.format("%.2f",rrspCf));
         }
         //taxable income
         taxableIncome = grossIncome - (cpp + ei + rrsp);
 
-        lblTaxableIncome.setText(String.format("%.2f",taxableIncome));
+        lblTaxableIncome.setText("$ " +String.format("%.2f",taxableIncome));
 
         //federal tax
         double calFederal = calcFedralTax();
-        lblFederal.setText( String.format("%.2f",calFederal));
+        lblFederal.setText( "$ " +String.format("%.2f",calFederal));
 
         // Provincial Tax
         double calProvincial = calcProvincialTax();
-        lblProvincial.setText(String.format("%.2f",calProvincial));
+        lblProvincial.setText("$ " +String.format("%.2f",calProvincial));
 
         //Total Tax Payed
         double taxpaid = calFederal+ calProvincial;
 
-        lblTaxPaid.setText( String.format("%.2f",taxpaid));
+        lblTaxPaid.setText( "$ " +String.format("%.2f",taxpaid));
     }
     public double calcFedralTax(){
         //calculate federal tax
