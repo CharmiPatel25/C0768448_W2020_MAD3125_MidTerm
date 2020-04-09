@@ -114,10 +114,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtTaxFillDate"
-                android:ems="10"
                 android:layout_marginTop="10dp"
+                android:ems="10"
                 android:hint="Enter Gross Income"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal" />
             <EditText
                 android:id="@+id/txtRrs"
                 android:layout_width="match_parent"
