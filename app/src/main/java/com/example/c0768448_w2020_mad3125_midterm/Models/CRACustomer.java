@@ -249,6 +249,14 @@ public class CRACustomer implements Parcelable
         return fed_tax;
     }
 
+
+    // calculating RRSP amount
+    public double rrspAmount(){
+        double rrsp_perc=18.00;
+        double actual_rrsp=(grossIncome*rrsp_perc)/100;
+        return actual_rrsp;
+    }
+
     public String amountFormatter()
     {
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
