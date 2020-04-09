@@ -21,8 +21,8 @@ import java.util.Locale;
 
 public class PersonInformationEntryActivity extends AppCompatActivity {
 
-    private EditText txtSin,txtFirstName,txtLastName,txtDob,txtTaxFillDate,txtGrossIncome,txtRrsContri;
-    private  TextView txtAge;
+    private EditText txtSin,txtFirstName,txtLastName,txtDob,txtGrossIncome,txtRrsContri;
+    private  TextView txtAge,txtTaxFillDate;
     private RadioButton rdMr,rdMrs,rdOther;
     private RadioGroup rdGender;
     private Button btnCalculate;
@@ -45,16 +45,21 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         rdMrs = findViewById(R.id.rdFeMale);
         rdOther = findViewById(R.id.rdOther);
         btnCalculate = findViewById(R.id.btnCalculate);
+        final Calendar cldr = Calendar.getInstance();
+       final int day = cldr.get(Calendar.DAY_OF_MONTH);
+      final   int month = cldr.get(Calendar.MONTH);
+       final int year = cldr.get(Calendar.YEAR);
 
+        txtTaxFillDate.setText(new StringBuilder()
+                // Month is 0 based, just add 1
+                .append(day).append(" ").append("-").append(month + 1).append("-")
+                .append(year));
         //Birth Date Picker
         txtDob.setInputType(InputType.TYPE_NULL);
         txtDob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
+
                 // date picker dialog
                 picker = new DatePickerDialog(PersonInformationEntryActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -62,12 +67,14 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                txtDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                txtDob.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
                             }
                         }, year, month, day);
                 picker.show();
             }
         });
+
 
 
     }

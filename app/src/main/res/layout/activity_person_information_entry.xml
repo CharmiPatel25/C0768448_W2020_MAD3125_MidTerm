@@ -92,12 +92,22 @@
                 android:textSize="20dp"
                 android:text="Age"/>
 
-<EditText
+<TextView
+    android:id="@+id/lblTaxFillDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Tax Fill Date"
+    android:ems="10"
+    android:textSize="20dp"
+    android:layout_below="@+id/rdGrpGender"/>
+<TextView
     android:id="@+id/txtTaxFillDate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/rdGrpGender"
-    android:hint="Tax Filling Date"/>
+    android:ems="10"
+    android:textSize="20dp"
+    android:layout_toRightOf="@+id/lblTaxFillDate"/>
 
             <EditText
                 android:id="@+id/txtGrossIncome"
@@ -105,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtTaxFillDate"
                 android:ems="10"
+                android:layout_marginTop="10dp"
                 android:hint="Enter Gross Income"
                 android:inputType="numberDecimal"/>
             <EditText
