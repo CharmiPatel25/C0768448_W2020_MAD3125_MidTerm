@@ -107,32 +107,24 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
     }
     public double calcFedralTax(){
         //calculate federal tax
-        double temp = taxableIncome ;
-        if(temp <= 12069.00){
-            federalTax = 0;//0%
-            temp = taxableIncome - 12069.00;
+        if(taxableIncome <=  12069.0d) {
+            return 0.0d;
         }
-        if(temp >= 12069.01){
-            federalTax = (temp * 0.15);//15%
-            temp = temp - 35561;
+        else if(taxableIncome >= 12069.0d && taxableIncome <= 47630.0d){
+            return 0.15d;
         }
-        if(temp >= 47630.01){
-            federalTax = (temp * 0.205); //20.50%
-            temp = temp - 47628.99;
+        else if(taxableIncome >= 47630.01d && taxableIncome <= 95259.0d){
+            return 0.2050d;
         }
-        if(temp >= 95259.01){
-            federalTax = (temp * 0.26); //26%
-            temp = temp - 52407.99;
+        else if(taxableIncome >= 95259.01d && taxableIncome <= 147667.0d){
+            return 0.26d;
         }
-        if (temp >= 147667.01){
-            federalTax = (temp * 0.29);//29%
-            temp = temp - 62703.99;
+        else if(taxableIncome >= 147667.01d && taxableIncome <= 210371.0d){
+            return 0.29d;
         }
-        if(temp >= 210371.01){
-            federalTax = (temp * 0.33);//33%
-            //temp = temp - federalTax;
+        else {
+            return 0.33d;
         }
-        return federalTax;
     }
 
     public  double calcProvincialTax(){
