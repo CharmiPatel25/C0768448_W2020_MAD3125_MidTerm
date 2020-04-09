@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.c0768448_w2020_mad3125_midterm.Models.CRACustomer;
 import com.example.c0768448_w2020_mad3125_midterm.R;
 
 import java.text.ParseException;
@@ -142,7 +143,16 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                 }
                  else {
 
+                    Double grossIncome = Double.parseDouble(txtGrossIncome.getText().toString());
+                    Double rrsp = Double.parseDouble(txtRrsContri.getText().toString());
+                    CRACustomer customer = new CRACustomer(txtSin.getText().toString(),
+                            txtFirstName.getText().toString(),
+                            txtLastName.getText().toString(),
+                            gender, grossIncome, rrsp);
                     Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
+                    intent.putExtra("CRACustomer", customer);
+                    intent.putExtra("age", txtAge.getText());
+                    intent.putExtra("gender", gender);
                     startActivity(intent);
                 }
             }
