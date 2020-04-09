@@ -206,6 +206,49 @@ public class CRACustomer implements Parcelable
         dest.writeDouble(total_tax_paid);
     }
 
+
+    // Calculating Federal tax
+    public double federalTax(){
+        double fed_tax=0.0;
+
+        double first_slab_perc=15.00;
+        double first_slab=35561;
+
+        double second_slab_perc=20.50;
+        double second_slab=47628.99;
+
+        double third_slab_perc=26.00;
+        double third_slab=52407.99;
+
+        double fourth_slab_perc=29.00;
+        double fourth_slab=60703.99;
+
+        double final_slab=0.01;
+        double final_slab_perc=33.00;
+        total_taxable_amount=total_taxable_amount-12069.00;
+        if(total_taxable_amount>=first_slab) {
+            fed_tax = (first_slab * first_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - first_slab;
+        }
+
+        if(total_taxable_amount>=second_slab) {
+            fed_tax = (second_slab * second_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - second_slab;
+        }
+        if(total_taxable_amount>=third_slab) {
+            fed_tax = (third_slab * third_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - third_slab;
+        }
+        if(total_taxable_amount>=fourth_slab) {
+            fed_tax = (fourth_slab * fourth_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - fourth_slab;
+        }
+        if(total_taxable_amount>=final_slab) {
+            fed_tax=(final_slab * final_slab_perc)/100;
+        }
+        return fed_tax;
+    }
+
     public String amountFormatter()
     {
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
