@@ -106,12 +106,41 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                int age;
-                age = calculateAge(txtDob.getText().toString());
-                if (age < 18) {
-                    btnCalculate.setAlpha(.5f);
-                    btnCalculate.setClickable(false);
-                } else {
+
+                if (txtSin.getText().toString().isEmpty() || !validateSinNumber()) {
+                    errorMsg();
+                    txtSin.setError("Enter Correct Sin Number");
+
+                }
+
+                if(txtFirstName.getText().toString().isEmpty())
+                {
+                    errorMsg();;
+                    txtFirstName.setError("Enter First Name");
+                }
+                if(txtLastName.getText().toString().isEmpty())
+                {
+                    errorMsg();;
+                    txtLastName.setError("Enter Last Name");
+                }
+                if(txtDob.getText().toString().isEmpty())
+                {
+                    errorMsg();;
+                    txtDob.setError("Enter  Date Of Birth");
+                }
+
+                if(txtGrossIncome.getText().toString().isEmpty())
+                {
+                    errorMsg();;
+                    txtGrossIncome.setError("Enter Gross Income");
+                }
+
+                if(txtRrsContri.getText().toString().isEmpty())
+                {
+                    errorMsg();;
+                    txtRrsContri.setError("EnterRRSP Contributed");
+                }
+                 else {
 
                     Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
                     startActivity(intent);
@@ -123,12 +152,23 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     int calculateAge(String date){
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
 
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        String agee= String.valueOf(age);
+        Toast.makeText(PersonInformationEntryActivity.this, agee, Toast.LENGTH_SHORT).show();
         if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)){
             age--;
         }
         return age;
     }
 
+
+    private void errorMsg(){
+        Toast.makeText(PersonInformationEntryActivity.this, "Please enter details", Toast.LENGTH_LONG).show();
+    }
+
+    public boolean validateSinNumber()
+    {
+        return txtSin.getText().toString().matches("^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$");
+    }
 }
