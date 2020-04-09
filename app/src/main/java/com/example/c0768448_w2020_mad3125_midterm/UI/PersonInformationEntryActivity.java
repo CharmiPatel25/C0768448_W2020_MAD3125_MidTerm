@@ -108,6 +108,12 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                txtAge.setText(currentDate());
+                /*int age = Integer.parseInt(String.valueOf(txtAge));
+                if(age< 18)
+                {
+                    Toast.makeText(PersonInformationEntryActivity.this, "Age less than 18", Toast.LENGTH_SHORT).show();
+                }*/
                 if (txtSin.getText().toString().isEmpty() ) {
                     errorMsg();
                     txtSin.setError("Enter Correct Sin Number");
@@ -151,7 +157,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             gender, grossIncome, rrsp);
                     Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
                     intent.putExtra("CRACustomer", customer);
-                   // intent.putExtra("age", txtAge.getText());
+                 // intent.putExtra("age", txtAge.getText());
                     intent.putExtra("gender", gender);
                     startActivity(intent);
                 }
@@ -159,20 +165,21 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         });
 
     }
-    int calculateAge(String date){
-        Calendar dob = Calendar.getInstance();
-        Calendar today = Calendar.getInstance();
 
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-        String agee= String.valueOf(age);
-        Toast.makeText(PersonInformationEntryActivity.this, agee, Toast.LENGTH_SHORT).show();
-        if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH)){
+    public String currentDate(){
+        StringBuilder todaydate=new StringBuilder();
+        Calendar today=Calendar.getInstance();
+        int age=today.get(Calendar.YEAR)-picker.getDatePicker().getYear();
+        if (today.get(Calendar.MONTH) < picker.getDatePicker().getYear()) {
+            age--;
+        } else if (today.get(Calendar.MONTH) == picker.getDatePicker().getYear()
+                && today.get(Calendar.DAY_OF_MONTH) < picker.getDatePicker().getYear()) {
             age--;
         }
-        return age;
+        todaydate.append("Age: ");
+        todaydate.append(String.valueOf(age));
+        return todaydate.toString();
     }
-
-
     private void errorMsg(){
         Toast.makeText(PersonInformationEntryActivity.this, "Please enter details", Toast.LENGTH_LONG).show();
     }

@@ -39,7 +39,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         lblProvincial = findViewById(R.id.lblProvincialTax);
         lblTaxPaid = findViewById(R.id.lblTaxPayed);
         lblAge = findViewById(R.id.lblAge);
-      //  lblAge.setText(getIntent().getStringExtra("age"));
+    // lblAge.setText(getIntent().getStringExtra("age"));
         lblTaxFillingDate = findViewById(R.id.lblTaxFillDate);
         lblBirthDate = findViewById(R.id.lblBirthDate);
 
@@ -52,6 +52,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         lblGender.setText(getIntent().getStringExtra("gender"));
         lblGrossIncome.setText(String.valueOf(customer.getGrossIncome()));
         lblRRsContri.setText(String.valueOf(customer.getRrsp_contri()));
+
 
         // calculate  cpp
         double grossIncome = customer.getGrossIncome();

@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="First Name"
+                android:padding="5dp"
                 android:layout_below="@+id/txtSinNumb"/>
             <EditText
                 android:id="@+id/txtLastName"
@@ -52,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Last Name"
+                android:padding="5dp"
                 android:layout_toRightOf="@+id/txtFirstName"
                 android:layout_below="@+id/txtSinNumb"/>
 
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Select Birth Date"
+                android:padding="5dp"
                 android:layout_below="@+id/txtLastName"/>
             <RadioGroup
                 android:id="@+id/rdGrpGender"
