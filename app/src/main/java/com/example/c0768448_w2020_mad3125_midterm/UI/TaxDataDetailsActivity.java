@@ -2,6 +2,7 @@ package com.example.c0768448_w2020_mad3125_midterm.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -36,5 +37,14 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         lblTaxFillingDate = findViewById(R.id.lblTaxFillDate);
         lblBirthDate = findViewById(R.id.lblBirthDate);
 
+
+        Intent mIntent = getIntent();
+        CRACustomer customer = mIntent.getParcelableExtra("CRACustomer");
+
+        lblSin.setText( customer.getSin_number());
+        lblfullName.setText( customer.getFull_name());
+        lblGender.setText(getIntent().getStringExtra("gender"));
+        lblGrossIncome.setText((int) customer.getGrossIncome());
+        lblRRsContri.setText((int) customer.getRrsp_contri());
     }
 }
