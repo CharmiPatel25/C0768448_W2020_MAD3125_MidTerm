@@ -94,6 +94,15 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         //federal tax
         double calFederal = calcFedralTax();
         lblFederal.setText( String.format("%.2f",calFederal));
+
+        // Provincial Tax
+        double calProvincial = calcProvincialTax();
+        lblProvincial.setText(String.format("%.2f",calProvincial));
+
+        //Total Tax Payed
+        double taxpaid = calFederal+ calProvincial;
+
+        lblTaxPaid.setText( String.format("%.2f",taxpaid));
     }
     public double calcFedralTax(){
         //calculate federal tax
