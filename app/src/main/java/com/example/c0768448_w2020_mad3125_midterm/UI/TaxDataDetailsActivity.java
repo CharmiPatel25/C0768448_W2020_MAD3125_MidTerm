@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -65,5 +66,22 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
             ei = (grossIncome * (1.62/100));
         }
         lblEi.setText(String.format("%.2f", ei));
+
+        // calculate RRSP
+        rrsp = customer.getRrsp_contri();
+        double maxRRSP = (grossIncome * 0.18); //18%
+        if(rrsp > maxRRSP ){
+            rrspCf = maxRRSP - rrsp ;
+            rrsp = maxRRSP;
+        }else{
+            rrsp = rrsp;
+        }
+        if(rrspCf<0)
+        {
+            lblRrsCarry.setTextColor(Color.parseColor("#9c060b"));
+            lblRrsCarry.setText(String.format("%.2f",rrspCf));
+        }
+      else
+          lblRrsCarry.setText(String.format("%.2f",rrspCf));
     }
 }
