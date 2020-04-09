@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -71,7 +72,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         txtDob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                btnCalculate.setClickable(true);
                 // date picker dialog
                 picker = new DatePickerDialog(PersonInformationEntryActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -154,21 +155,30 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                  else {
 
                     txtAge.setText(currentDate());
-                     String dob = txtDob.getText().toString();
-                     String taxFillDate = txtTaxFillDate.getText().toString();
-                    Double grossIncome = Double.parseDouble(txtGrossIncome.getText().toString());
-                    Double rrsp = Double.parseDouble(txtRrsContri.getText().toString());
-                    CRACustomer customer = new CRACustomer(txtSin.getText().toString(),
-                            txtFirstName.getText().toString(),
-                            txtLastName.getText().toString(),
-                            gender, grossIncome, rrsp);
-                    Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
-                    intent.putExtra("CRACustomer", customer);
-                    intent.putExtra("age", txtAge.getText().toString());
-                    intent.putExtra("gender", gender);
-                    intent.putExtra("dob",dob);
-                    intent.putExtra("taxFillDate",taxFillDate);
-                    startActivity(intent);
+                    int checkAge = Integer.parseInt(txtAge.getText().toString());
+                    if(checkAge <=18)
+                    {
+                        txtDob.setError("Age must be above 18 ");
+                        txtDob.setTextColor(Color.parseColor("#9c060b"));
+                        btnCalculate.setClickable(false);
+                    }
+                    else {
+                        String dob = txtDob.getText().toString();
+                        String taxFillDate = txtTaxFillDate.getText().toString();
+                        Double grossIncome = Double.parseDouble(txtGrossIncome.getText().toString());
+                        Double rrsp = Double.parseDouble(txtRrsContri.getText().toString());
+                        CRACustomer customer = new CRACustomer(txtSin.getText().toString(),
+                                txtFirstName.getText().toString(),
+                                txtLastName.getText().toString(),
+                                gender, grossIncome, rrsp);
+                        Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
+                        intent.putExtra("CRACustomer", customer);
+                        intent.putExtra("age", txtAge.getText().toString());
+                        intent.putExtra("gender", gender);
+                        intent.putExtra("dob", dob);
+                        intent.putExtra("taxFillDate", taxFillDate);
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -185,7 +195,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                 && today.get(Calendar.DAY_OF_MONTH) < picker.getDatePicker().getYear()) {
             age--;
         }
-        todaydate.append("Age: ");
+       // todaydate.append("Age: ");
         todaydate.append(String.valueOf(age));
         return todaydate.toString();
     }
