@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E1BAE8"
     tools:context=".UI.SplashScreenActivity">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="248dp"
@@ -29,7 +31,9 @@
         android:layout_marginBottom="381dp"
         android:gravity="center"
         android:text="Charmi Patel"
+        android:textColor="#0E0E0E"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +49,29 @@
         android:layout_marginBottom="282dp"
         android:gravity="center"
         android:text="C0768448"
+        android:textColor="#0E0E0E"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblstudentName" />
+
+    <TextView
+        android:id="@+id/lblAppName"
+        android:layout_width="237dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="83dp"
+        android:gravity="center"
+        android:text="Tax Calculator App"
+        android:textColor="#B82727"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        android:background="#E1BAE8">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,7 +36,6 @@
                 android:ems="10"
                 android:hint="Please Enter Sin Number "
                 android:inputType="textPersonName"
-                android:padding="5dp"
                 android:text=""
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
@@ -45,7 +45,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="First Name"
-                android:padding="5dp"
                 android:layout_below="@+id/txtSinNumb"/>
             <EditText
                 android:id="@+id/txtLastName"
@@ -53,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Last Name"
-                android:padding="5dp"
                 android:layout_toRightOf="@+id/txtFirstName"
                 android:layout_below="@+id/txtSinNumb"/>
 
@@ -63,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Select Birth Date"
-                android:padding="5dp"
                 android:layout_below="@+id/txtLastName"/>
             <RadioGroup
                 android:id="@+id/rdGrpGender"
@@ -120,7 +117,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtTaxFillDate"
-                android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/dollar"
                 android:ems="10"
                 android:hint="Enter Gross Income"

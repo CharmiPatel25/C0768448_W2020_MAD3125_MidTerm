@@ -160,6 +160,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                     {
                         txtDob.setError("Age must be above 18 ");
                         txtDob.setTextColor(Color.parseColor("#9c060b"));
+                        Toast.makeText(PersonInformationEntryActivity.this, "Not eligible to file tax for current year 2019", Toast.LENGTH_LONG).show();
                         btnCalculate.setClickable(false);
                     }
                     else {
