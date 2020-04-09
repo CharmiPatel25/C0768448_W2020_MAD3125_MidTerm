@@ -272,6 +272,22 @@ public class CRACustomer implements Parcelable
         return actual_cpp;
     }
 
+    // calculating EI amount
+    public double eiAmount(){
+
+        double ei_slab=53100.00;
+        double ei_rate=1.62;
+        double actual_ei=0.0;
+        if(grossIncome>=ei_slab)
+        {
+            actual_ei=(ei_slab*ei_rate)/100;
+        }
+        else {
+            actual_ei=(grossIncome*ei_rate)/100;
+        }
+        return actual_ei;
+    }
+
     public String amountFormatter()
     {
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
