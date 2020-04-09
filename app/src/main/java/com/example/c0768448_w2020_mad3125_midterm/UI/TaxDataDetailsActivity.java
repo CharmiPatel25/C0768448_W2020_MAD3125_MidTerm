@@ -2,6 +2,7 @@ package com.example.c0768448_w2020_mad3125_midterm.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
 
     double cpp = 0, ei = 0;  double rrsp = 0, rrspCf = 0, taxableIncome, federalTax,
             provincialTax, totalTaxPaid;
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,14 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         } else {
             cpp = (grossIncome * 0.051);
         }
-        lblCpp.setText(String.valueOf(cpp));
+        lblCpp.setText(String.format("%.2f", cpp));
 
+        // calculate employement insurance
+        if(grossIncome > 53100){
+            ei = (53100 * 0.0162); //1.62%
+        }else{
+            ei = (grossIncome * (1.62/100));
+        }
+        lblEi.setText(String.format("%.2f", ei));
     }
 }

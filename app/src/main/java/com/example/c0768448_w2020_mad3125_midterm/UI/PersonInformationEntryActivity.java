@@ -108,7 +108,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (txtSin.getText().toString().isEmpty() || !validateSinNumber()) {
+                if (txtSin.getText().toString().isEmpty() ) {
                     errorMsg();
                     txtSin.setError("Enter Correct Sin Number");
 
