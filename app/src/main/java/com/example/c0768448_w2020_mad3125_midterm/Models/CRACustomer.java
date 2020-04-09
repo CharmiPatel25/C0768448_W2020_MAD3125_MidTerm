@@ -288,6 +288,47 @@ public class CRACustomer implements Parcelable
         return actual_ei;
     }
 
+    // Calculating provincial tax
+    public double provincialTax(){
+        double pro_tax=0.0;
+
+        double first_slab_perc=5.05;
+        double first_slab=33324;
+
+        double second_slab_perc=9.15;
+        double second_slab=43907;
+
+        double third_slab_perc=11.16;
+        double third_slab=62187;
+
+        double fourth_slab_perc=12.16;
+        double fourth_slab=70000;
+
+        double final_slab=0.01;
+        double final_slab_perc=13.16;
+        total_taxable_amount=total_taxable_amount-10582.00;
+        if(total_taxable_amount<=first_slab) {
+            pro_tax = (first_slab * first_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - first_slab;
+        }
+
+        if(total_taxable_amount<=second_slab) {
+            pro_tax = (second_slab * second_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - second_slab;
+        }
+        if(total_taxable_amount<=third_slab) {
+            pro_tax = (third_slab * third_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - third_slab;
+        }
+        if(total_taxable_amount<=fourth_slab) {
+            pro_tax = (fourth_slab * fourth_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - fourth_slab;
+        }
+        if(total_taxable_amount<=final_slab) {
+            pro_tax=(final_slab * final_slab_perc)/100;
+        }
+        return pro_tax;
+    }
     public String amountFormatter()
     {
         NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
