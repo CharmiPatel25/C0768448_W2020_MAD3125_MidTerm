@@ -44,7 +44,17 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         lblSin.setText( customer.getSin_number());
         lblfullName.setText( customer.getFull_name());
         lblGender.setText(getIntent().getStringExtra("gender"));
-        lblGrossIncome.setText((int) customer.getGrossIncome());
-        lblRRsContri.setText((int) customer.getRrsp_contri());
+        lblGrossIncome.setText(String.valueOf(customer.getGrossIncome()));
+        lblRRsContri.setText(String.valueOf(customer.getRrsp_contri()));
+
+        // calculate  cpp
+        double grossIncome = customer.getGrossIncome();
+        if(grossIncome > 57400.00){
+            cpp = (57400.00 * 0.051); //5.10%
+        } else {
+            cpp = (grossIncome * 0.051);
+        }
+        lblCpp.setText(String.valueOf(cpp));
+
     }
 }
