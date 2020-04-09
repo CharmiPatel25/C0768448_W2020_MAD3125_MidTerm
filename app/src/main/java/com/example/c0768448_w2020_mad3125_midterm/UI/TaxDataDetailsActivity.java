@@ -12,6 +12,7 @@ import com.example.c0768448_w2020_mad3125_midterm.Models.CRACustomer;
 import com.example.c0768448_w2020_mad3125_midterm.R;
 
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class TaxDataDetailsActivity extends AppCompatActivity {
@@ -50,6 +51,9 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         lblSin.setText( customer.getSin_number());
         lblfullName.setText( customer.getFull_name());
         lblGender.setText(getIntent().getStringExtra("gender"));
+        lblBirthDate.setText(getIntent().getStringExtra("dob"));
+        lblTaxFillingDate.setText(getIntent().getStringExtra("taxFillDate"));
+        lblAge.setText(getIntent().getStringExtra("age"));
         lblGrossIncome.setText(String.valueOf(customer.getGrossIncome()));
         lblRRsContri.setText(String.valueOf(customer.getRrsp_contri()));
 
@@ -105,52 +109,67 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
 
         lblTaxPaid.setText( "$ " +String.format("%.2f",taxpaid));
     }
+
+
+
     public double calcFedralTax(){
-        //calculate federal tax
-        if(taxableIncome <=  12069.0d) {
-            return 0.0d;
+        double temp = taxableIncome ;
+        if((temp <= 12069.00) && (temp >= 0)){
+            federalTax = 0;//0%
+            // temp = taxableIncome - 12069.00;
         }
-        else if(taxableIncome >= 12069.0d && taxableIncome <= 47630.0d){
-            return 0.15d;
+        else if((temp >= 12069.01) &&(temp<= 47630)){
+            federalTax = (temp * 0.15);//15%
+            // temp = temp - 35561;
         }
-        else if(taxableIncome >= 47630.01d && taxableIncome <= 95259.0d){
-            return 0.2050d;
+        else if((temp >= 47630.01)&&(temp<= 95259)){
+            federalTax = (temp * 0.205); //20.50%
+            //temp = temp - 47628.99;
         }
-        else if(taxableIncome >= 95259.01d && taxableIncome <= 147667.0d){
-            return 0.26d;
+        else if((temp >= 95259.01)&&(temp<= 147667)){
+            federalTax = (temp * 0.26); //26%
+            // temp = temp - 52407.99;
         }
-        else if(taxableIncome >= 147667.01d && taxableIncome <= 210371.0d){
-            return 0.29d;
+        else if ((temp >= 147667.01)&&(temp<= 210371)){
+            federalTax = (temp * 0.29);//29%
+            //temp = temp - 62703.99;
         }
-        else {
-            return 0.33d;
+        else if(temp >= 210371.01){
+            federalTax = (temp * 0.33);//33%
+            //temp = temp - federalTax;
         }
+        return federalTax;
     }
 
     public  double calcProvincialTax(){
         //calculate provincial tax
-        if(taxableIncome <= 10582.0d) {
-            return 0.0d;
+        double temp = taxableIncome ;
+
+        if(temp <= 10582.00){
+            provincialTax = 0;
+            //temp = taxableIncome - 10582.00;
         }
-        else if(taxableIncome >= 10582.0d && taxableIncome <=43906.0d)
-        {
-            return 0.0505d;
+        else if((temp >= 10582.01)&&(temp <= 43906 )){
+            provincialTax = (temp * 0.0505); //5.05%
+            //temp = temp - 33323.99;
         }
-        else if(taxableIncome >= 43906.0d && taxableIncome <= 87813.0d)
-        {
-            return 0.0915d;
+        else if((temp >= 43906.01)&&(temp <= 87813 )){
+            provincialTax = (temp * 0.0915); //9.15%
+            //temp = temp - 43906.99;
         }
-        else if (taxableIncome >= 87813.0d && taxableIncome <= 150000.0d) {
-            return 0.1116d;
+        else if((temp >= 87813.01)&&(temp <= 150000)){
+            provincialTax = (temp * 0.1116); //11.16%
+            //temp = temp - 62187.99;
         }
-        else if (taxableIncome >= 150000.0d && taxableIncome <= 220000.0d)
-        {
-            return 0.1216d;
+        else if ((temp >= 150000.01)&&(temp <= 220000)){
+            provincialTax = (temp * 0.1216);//12.16%
+            //temp = temp - 69999.99;
         }
-        else
-        {
-            return 0.1316d;
+        else if(temp >= 220000.01){
+            provincialTax = (temp * 0.1316);//13.16%
+
         }
+        return provincialTax;
     }
 }
 

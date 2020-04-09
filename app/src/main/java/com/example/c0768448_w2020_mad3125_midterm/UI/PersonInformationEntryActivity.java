@@ -84,9 +84,9 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
+
             }
         });
-
 
         rdGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -108,7 +108,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                txtAge.setText(currentDate());
+             //
                 /*int age = Integer.parseInt(String.valueOf(txtAge));
                 if(age< 18)
                 {
@@ -118,11 +118,6 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                     errorMsg();
                     txtSin.setError("Enter Correct Sin Number");
 
-                }
-
-                if(!validateSinNumb(txtSin.getText().toString()))
-                {
-                    txtSin.setError("Enter a valid SIN number");
                 }
                 if(txtFirstName.getText().toString().isEmpty())
                 {
@@ -151,8 +146,16 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                     errorMsg();;
                     txtRrsContri.setError("EnterRRSP Contributed");
                 }
+                if(!validateSinNumb(txtSin.getText().toString()))
+                {
+
+                    txtSin.setError("Enter a valid SIN number");
+                }
                  else {
 
+                    txtAge.setText(currentDate());
+                     String dob = txtDob.getText().toString();
+                     String taxFillDate = txtTaxFillDate.getText().toString();
                     Double grossIncome = Double.parseDouble(txtGrossIncome.getText().toString());
                     Double rrsp = Double.parseDouble(txtRrsContri.getText().toString());
                     CRACustomer customer = new CRACustomer(txtSin.getText().toString(),
@@ -161,8 +164,10 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             gender, grossIncome, rrsp);
                     Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
                     intent.putExtra("CRACustomer", customer);
-                 // intent.putExtra("age", txtAge.getText());
+                    intent.putExtra("age", txtAge.getText().toString());
                     intent.putExtra("gender", gender);
+                    intent.putExtra("dob",dob);
+                    intent.putExtra("taxFillDate",taxFillDate);
                     startActivity(intent);
                 }
             }
