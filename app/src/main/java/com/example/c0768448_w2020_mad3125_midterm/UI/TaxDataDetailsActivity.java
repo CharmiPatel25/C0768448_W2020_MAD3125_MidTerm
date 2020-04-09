@@ -137,33 +137,28 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
 
     public  double calcProvincialTax(){
         //calculate provincial tax
-        double temp = taxableIncome ;
-
-        if(temp <= 10582.00){
-            provincialTax = 0;
-            temp = taxableIncome - 10582.00;
+        if(taxableIncome <= 10582.0d) {
+            return 0.0d;
         }
-        if(temp >= 10582.01){
-            provincialTax = (temp * 0.0505); //5.05%
-            temp = temp - 33323.99;
+        else if(taxableIncome >= 10582.0d && taxableIncome <=43906.0d)
+        {
+            return 0.0505d;
         }
-        if(temp >= 43906.01){
-            provincialTax = (temp * 0.0915); //9.15%
-            temp = temp - 43906.99;
+        else if(taxableIncome >= 43906.0d && taxableIncome <= 87813.0d)
+        {
+            return 0.0915d;
         }
-        if(temp >= 87813.01){
-            provincialTax = (temp * 0.1116); //11.16%
-            temp = temp - 62187.99;
+        else if (taxableIncome >= 87813.0d && taxableIncome <= 150000.0d) {
+            return 0.1116d;
         }
-        if (temp >= 150000.01){
-            provincialTax = (temp * 0.1216);//12.16%
-            temp = temp - 69999.99;
+        else if (taxableIncome >= 150000.0d && taxableIncome <= 220000.0d)
+        {
+            return 0.1216d;
         }
-        if(temp >= 220000.01){
-            provincialTax = (temp * 0.1316);//13.16%
-
+        else
+        {
+            return 0.1316d;
         }
-        return provincialTax;
     }
 }
 
