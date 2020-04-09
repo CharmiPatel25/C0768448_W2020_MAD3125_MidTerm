@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.example.c0768448_w2020_mad3125_midterm.Models.CRACustomer;
 import com.example.c0768448_w2020_mad3125_midterm.R;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TaxDataDetailsActivity extends AppCompatActivity {
     CRACustomer customer;
     private TextView lblSin,lblfullName,lblBirthDate,lblGender,lblAge,lblTaxFillingDate,lblGrossIncome,lblRRsContri,lblRrsCarry,lblFederal,lblProvincial,lblEi,
@@ -70,18 +73,57 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
         // calculate RRSP
         rrsp = customer.getRrsp_contri();
         double maxRRSP = (grossIncome * 0.18); //18%
-        if(rrsp > maxRRSP ){
+
             rrspCf = maxRRSP - rrsp ;
-            rrsp = maxRRSP;
-        }else{
-            rrsp = rrsp;
-        }
+            //rrsp = maxRRSP;
+
         if(rrspCf<0)
         {
             lblRrsCarry.setTextColor(Color.parseColor("#9c060b"));
             lblRrsCarry.setText(String.format("%.2f",rrspCf));
         }
       else
-          lblRrsCarry.setText(String.format("%.2f",rrspCf));
+        {
+            lblRrsCarry.setText(String.format("%.2f",rrspCf));
+        }
+        //taxable income
+        taxableIncome = grossIncome - (cpp + ei + rrsp);
+
+        lblTaxableIncome.setText(String.format("%.2f",taxableIncome));
+
+        //federal tax
+        double calFederal = calcFedralTax();
+        lblFederal.setText( String.format("%.2f",calFederal));
     }
+    public double calcFedralTax(){
+        //calculate federal tax
+        double temp = taxableIncome ;
+        if(temp <= 12069.00){
+            federalTax = 0;//0%
+            temp = taxableIncome - 12069.00;
+        }
+        if(temp >= 12069.01){
+            federalTax = (temp * 0.15);//15%
+            temp = temp - 35561;
+        }
+        if(temp >= 47630.01){
+            federalTax = (temp * 0.205); //20.50%
+            temp = temp - 47628.99;
+        }
+        if(temp >= 95259.01){
+            federalTax = (temp * 0.26); //26%
+            temp = temp - 52407.99;
+        }
+        if (temp >= 147667.01){
+            federalTax = (temp * 0.29);//29%
+            temp = temp - 62703.99;
+        }
+        if(temp >= 210371.01){
+            federalTax = (temp * 0.33);//33%
+            //temp = temp - federalTax;
+        }
+        return federalTax;
+    }
+
 }
+
