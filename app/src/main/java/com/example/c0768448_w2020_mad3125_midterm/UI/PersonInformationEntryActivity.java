@@ -151,7 +151,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             gender, grossIncome, rrsp);
                     Intent intent = new Intent(PersonInformationEntryActivity.this, TaxDataDetailsActivity.class);
                     intent.putExtra("CRACustomer", customer);
-                    intent.putExtra("age", txtAge.getText());
+                   // intent.putExtra("age", txtAge.getText());
                     intent.putExtra("gender", gender);
                     startActivity(intent);
                 }

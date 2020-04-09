@@ -19,5 +19,22 @@ public class TaxDataDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tax_data_details);
+        lblSin = findViewById(R.id.lblSinNumber);
+        lblfullName = findViewById(R.id.lblFullName);
+        lblGender =   findViewById(R.id.lblGender);
+        lblGrossIncome = findViewById(R.id.lblGrossIncome);
+        lblRRsContri = findViewById(R.id.lblRrsContributed);
+        lblCpp = findViewById(R.id.lblCpp);
+        lblEi = findViewById(R.id.lblEi);
+        lblRrsCarry = findViewById(R.id.lblCarryRrs);
+        lblTaxableIncome = findViewById(R.id.lblTotalTaxIncome);
+        lblFederal = findViewById(R.id.lblFederalTax);
+        lblProvincial = findViewById(R.id.lblProvincialTax);
+        lblTaxPaid = findViewById(R.id.lblTaxPayed);
+        lblAge = findViewById(R.id.lblAge);
+      //  lblAge.setText(getIntent().getStringExtra("age"));
+        lblTaxFillingDate = findViewById(R.id.lblTaxFillDate);
+        lblBirthDate = findViewById(R.id.lblBirthDate);
+
     }
 }
