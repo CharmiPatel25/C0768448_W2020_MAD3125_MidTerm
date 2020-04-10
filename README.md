@@ -12,4 +12,3 @@
 
 # Screens
 
-![Image description](C:\Users\Charmi\Desktop\MADT Sem 1\Android Sem1\Ex6Images\SplashScreen.png)
